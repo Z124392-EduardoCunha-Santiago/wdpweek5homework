@@ -60,11 +60,13 @@
 
     async function getQuote() {
       //INPUT YOUR CODE HERE
-      quotes = await fetch("quotes.json");
-      quotes = await quotes.json();
-      quotes = quotes[Math.floor(Math.random() * quotes.length)];
-      quoteText.textContent = quotes.q;
-      authorText.textContent = quotes.a;
+      fetch("quotes.json")
+        .then(res => res.json())
+        .then(data => {
+          quotes = data;
+          quoteText.innerHTML = quotes.q;
+          authorText.innerHTML = quotes.a;
+        });
 
     }
     newQuoteBtn.addEventListener("click", getQuote);
