@@ -63,7 +63,8 @@
       fetch("quotes.json")
         .then(res => res.json())
         .then(data => {
-          quotes = data;
+          const randomIndex = Math.floor(Math.random() * data.length);
+          quotes = data[randomIndex];
           quoteText.innerHTML = quotes.q;
           authorText.innerHTML = quotes.a;
         });
