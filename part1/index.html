@@ -65,8 +65,8 @@
         .then(data => {
           const randomIndex = Math.floor(Math.random() * data.length);
           quotes = data[randomIndex];
-          quoteText.innerHTML = quotes.q;
-          authorText.innerHTML = quotes.a;
+          quoteText.textContent = quotes.q;
+          authorText.textContent = quotes.a;
         });
     }
     newQuoteBtn.addEventListener("click", getQuote);
