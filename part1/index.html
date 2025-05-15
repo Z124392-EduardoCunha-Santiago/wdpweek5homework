@@ -54,8 +54,8 @@
   </footer>
 
   <script>
-    const quoteText = document.getElementById("quote").innerHTML = quotes.q;
-    const authorText = document.getElementById("author").innerHTML = quotes.a;
+    const quoteText = document.getElementById("quote");
+    const authorText = document.getElementById("author");
     const newQuoteBtn = document.getElementById("newQuoteBtn");
 
     async function getQuote() {
@@ -68,7 +68,6 @@
           quoteText.innerHTML = quotes.q;
           authorText.innerHTML = quotes.a;
         });
-
     }
     newQuoteBtn.addEventListener("click", getQuote);
     getQuote(); // Load a quote on page load
