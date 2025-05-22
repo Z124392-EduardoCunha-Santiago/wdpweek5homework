@@ -25,7 +25,7 @@
     #question-count {
       font-size: 0.9rem;
       color: #777;
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
       text-align: right;
     }
     #question {
@@ -37,13 +37,47 @@
       margin: 0.5rem 0;
     }
     button {
-      margin-top: 1rem;
       padding: 0.5rem 1rem;
       font-size: 1rem;
     }
     #result {
       margin-top: 2rem;
       font-weight: bold;
+      text-align: center;
+    }
+
+    #progress-bar-container {
+      width: 100%;
+      height: 10px;
+      background-color: #ccc;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+    }
+
+    #progress-bar {
+      height: 10px;
+      background-color: cornflowerblue;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+    }
+
+    footer {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #countdown {
+      height: 1.5rem;
+      width: 1.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      border-color: #ccc;
+      border-style: solid;
+      border-width: 1px;
+      padding: 0.5rem;
       text-align: center;
     }
   </style>
@@ -53,12 +87,17 @@
   <h1>JavaScript Quiz</h1>
   <div class="quiz-box">
     <div id="question-count">Question 1 of 30</div>
+    <div id="progress-bar-container">
+      <div id="progress-bar"></div>
+    </div>
     <div id="question">Question will appear here</div>
     <div id="options"></div>
-    <button id="nextBtn">Next</button>
+    <footer>
+      <button id="nextBtn">Next</button>
+      <div id="countdown">15</div>
+    </footer>
     <div id="result"></div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
