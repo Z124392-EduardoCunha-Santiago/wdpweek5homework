@@ -16,9 +16,11 @@ fetch("questions.json")
     showQuestion();
   });
 
-
+let countdownInterval;
 function showQuestion() {
   let countdown = 15;
+  clearInterval(countdownInterval);
+  countdownElement.textContent = countdown;
 
   clearOptions();
   document.getElementById("question-count").textContent =
@@ -47,14 +49,12 @@ function showQuestion() {
 });
   setInterval(() => {
     countdown--;
-    countdownElement.textContent = countdown.toString();
+    countdown.textContent = countdown.toString();
     if (countdown === 0) {
-      optionsContainer.children.forEach((btn, i) => {
-        btn.disabled = true;
-        btn.checkAnswer(i);
-      })
-      nextBtn.disabled = false;
-    }
+    clearInterval(countdownInterval);
+    checkAnswer(-1); // Indicate no selection
+    nextBtn.disabled = false;
+  }
   }, 1000);
 }
 
