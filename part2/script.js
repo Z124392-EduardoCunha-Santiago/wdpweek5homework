@@ -6,6 +6,8 @@ const questionText = document.getElementById("question");
 const optionsContainer = document.getElementById("options");
 const nextBtn = document.getElementById("nextBtn");
 const resultBox = document.getElementById("result");
+const progressBar = document.getElementById("progress-bar");
+const countDown = document.getElementById("countdown");
 
 fetch("questions.json")
   .then(res => res.json())
@@ -14,10 +16,17 @@ fetch("questions.json")
     showQuestion();
   });
 
+
 function showQuestion() {
+  let countdown = 15;
+
   clearOptions();
   document.getElementById("question-count").textContent =
   `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+  
+  const progressBarWidth = (currentQuestionIndex + 1) / questions.length * 100;
+  progressBar.style.width = `${progressBarWidth}%`;
+
   const q = questions[currentQuestionIndex];
   questionText.textContent = q.question;
 
@@ -36,6 +45,17 @@ function showQuestion() {
   btn.addEventListener("click", () => checkAnswer(index));
   optionsContainer.appendChild(btn);
 });
+  setInterval(() => {
+    countdown--;
+    countdownElement.textContent = countdown.toString();
+    if (countdown === 0) {
+      optionsContainer.children.forEach((btn, i) => {
+        btn.disabled = true;
+        btn.checkAnswer(i);
+      })
+      nextBtn.disabled = false;
+    }
+  }, 1000);
 }
 
 function checkAnswer(selectedIndex) {
